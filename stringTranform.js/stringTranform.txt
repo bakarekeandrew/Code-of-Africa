@@ -1,0 +1,27 @@
+function transformString(inputStr) {
+    const length = inputStr.length;
+    let output = '';
+
+    if (length % 15 === 0) {
+        // Reverse the string and then replace each character with its ASCII code
+        const reversedStr = inputStr.split('').reverse().join('');
+        output = reversedStr.split('').map(char => char.charCodeAt(0)).join(' ');
+    } else if (length % 3 === 0) {
+        // Reverse the string
+        output = inputStr.split('').reverse().join('');
+    } else if (length % 5 === 0) {
+        // Replace each character with its ASCII code
+        output = inputStr.split('').map(char => char.charCodeAt(0)).join(' ');
+    } else {
+        // No transformation
+        output = inputStr;
+    }
+
+    return output;
+}
+
+// Example usage:
+console.log(transformString("Hamburger"));           // Output: "regrubmaH"
+console.log(transformString("Pizza"));               // Output: "80 105 122 122 97"
+console.log(transformString("Chocolate Chip Cookie"));// Output: "eikooCpihCetalocohC"
+console.log(transformString("Example"));             // Output: "Example" (no transformation as length is not divisible by 3 or 5)

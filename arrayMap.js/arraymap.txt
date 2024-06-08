@@ -1,0 +1,25 @@
+function hasContiguousSubarrayWithSum(arr, target) {
+    let left = 0;
+    let currentSum = 0;
+
+    for (let right = 0; right < arr.length; right++) {
+        currentSum += arr[right];
+
+        while (currentSum > target) {
+            currentSum -= arr[left];
+            left++;
+        }
+
+        if (currentSum === target) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// Example usage
+const arr = [4, 2, 7, 1, 1, 5];
+const target = 14;
+const result = hasContiguousSubarrayWithSum(arr, target);
+console.log(result);  // Output: true
